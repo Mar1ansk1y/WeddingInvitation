@@ -1,0 +1,56 @@
+/* По умолчанию показываем мобильную версию */
+.desktop-version, .tablet-version {
+    display: none;
+}
+.mobile-version {
+    display: block;
+}
+
+/* Планшет (от 800px до 1279px) */
+@media (min-width: 800px) and (max-width: 1279px) {
+    .mobile-version, .desktop-version {
+        display: none;
+    }
+    .tablet-version {
+        display: block;
+    }
+}
+
+/* Десктоп (от 1280px) */
+@media (min-width: 1280px) {
+    .mobile-version, .tablet-version {
+        display: none;
+    }
+    .desktop-version {
+        display: block;
+    }
+}
+
+@font-face {
+    font-family: 'Nyght Serif';
+    src: url('fonts/NyghtSerif-Light.woff2') format('woff2');
+    src: url('fonts/NyghtSerif-Light.ttf') format('truetype');
+    font-weight: 300;  /* Light */
+    font-style: normal;
+}
+
+body, .nyght-font {
+    font-family: 'Nyght Serif', serif;
+}
+
+/* Медиазапросы для переключения версий */
+.tablet-version, .desktop-version { display: none; }
+@media (min-width: 800px) and (max-width: 1279px) {
+    .mobile-version { display: none; }
+    .tablet-version { display: block; }
+    .desktop-version { display: none; }
+}
+@media (min-width: 1280px) {
+    .mobile-version { display: none; }
+    .tablet-version { display: none; }
+    .desktop-version { display: block; }
+}
+/* Дополнительно: убираем отступы у параграфов внутри флекс-контейнеров */
+.content-stretch p {
+    margin: 0;
+}
