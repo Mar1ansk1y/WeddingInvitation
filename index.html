@@ -13,6 +13,7 @@
     <meta property="og:description" content="20 июня 2026 года">
     <meta property="og:image" content="https://mar1ansk1y.github.io/WeddingInvitation/images/preview.jpg">
     <meta property="og:url" content="https://mar1ansk1y.github.io/WeddingInvitation/">
+    <script src="script.js" defer></script>
 </head>
 <body class="bg-[#160101]">
     <!-- Мобильная версия -->
@@ -333,7 +334,8 @@
         <!-- ЭКРАН 8: АНКЕТА ГОСТЯ (мобильная версия) -->
         <div class="relative min-h-[1500px] w-full bg-[#160101]">
             <!-- Основной контейнер (вертикальный список) -->
-            <div class="flex flex-col items-center w-full h-full overflow-y-auto pt-4 pb-8">
+            <form id="guestFormMobile" class="flex flex-col items-center w-full h-full overflow-y-auto pt-4 pb-8">
+            
                 <!-- Заголовок -->
                 <div class="flex items-center justify-center pt-[100px] w-full">
                     <p class="font-['Nyght_Serif',sans-serif] text-[48px] text-white leading-none">Анкета гостя</p>
@@ -349,74 +351,71 @@
                     <p class="font-['Inter',sans-serif] font-light text-[16px] text-white w-[296px]">Имя и фамилия:</p>
                 </div>
 
-                <!-- Линия для ввода (подчёркивания) -->
-                <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Nyght_Serif',sans-serif] text-[48px] text-center text-white">____________</p>
+                <!-- Поле имени -->
+                <div class="flex items-center justify-center pt-[15px] w-full">
+                    <input required type="text" name="nameandsurname"
+                        class="w-full max-w-[296px] bg-transparent border-b-2 border-white text-white text-[16px] font-['Inter'] font-light text-left outline-none pb-1" />
                 </div>
 
                 <!-- Вопрос про ЗАГС -->
                 <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Inter',sans-serif] font-light text-[16px] text-center text-white">Планируете ли присутствовать в загсе?</p>
+                    <p class="font-['Inter',sans-serif] font-light max-w-[296px] w-full text-[16px] text-left text-white">Планируете ли присутствовать в загсе?</p>
                 </div>
 
                 <!-- Вариант "Да, конечно" -->
                 <div class="flex items-center justify-center pt-[20px] w-full">
-                    <div class="relative w-[15px] h-[15px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 15 15">
-                            <circle cx="7.5" cy="7.5" r="6.5" stroke="white" stroke-width="2" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[16px] text-white w-[280px]">Да, конечно</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_zags" value="Да" class="hidden"/>
+                        <span class="w-[15px] h-[15px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[9px] h-[9px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[16px] text-white w-[280px]">Да, конечно</span>
+                    </label>
                 </div>
 
                 <!-- Вариант "Не получится" -->
                 <div class="flex items-center justify-center pt-[10px] w-full">
-                    <div class="relative w-[15px] h-[15px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 15 15">
-                            <circle cx="7.5" cy="7.5" r="6.5" stroke="white" stroke-width="2" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[16px] text-white w-[280px]">Не получится</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_zags" value="Нет" class="hidden"/>
+                        <span class="w-[15px] h-[15px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[9px] h-[9px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[16px] text-white w-[280px]">Не получится</span>
+                    </label>
                 </div>
 
                 <!-- Вопрос про банкет -->
-                <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Inter',sans-serif] font-light text-[16px] text-center text-white">Планируете ли присутствие на банкете?</p>
+                <div class="banket-question">
+                    <div class="flex items-center justify-center pt-[30px] w-full">
+                        <p class="font-['Inter',sans-serif] font-light max-w-[296px] w-full text-[16px] text-left text-white">Планируете ли присутствие на банкете?</p>
+                    </div>
+
+                    <!-- Вариант "Да, такое нельзя пропустить" -->
+                    <div class="flex items-center justify-center pt-[20px] w-full">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="is_banket" value="Да" class="hidden"/>
+                            <span class="w-[15px] h-[15px] rounded-full border-2 border-white flex items-center justify-center">
+                                <span class="w-[9px] h-[9px] rounded-full bg-white hidden"></span>
+                            </span>
+                            <span class="pl-[15px] font-['Inter'] font-light text-[16px] text-white w-[280px]">Да, такое нельзя пропустить</span>
+                        </label>
+                    </div>
+
+                    <!-- Вариант "К сожалению, не получится" -->
+                    <div class="flex items-center justify-center pt-[10px] w-full">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="is_banket" value="Нет" class="hidden"/>
+                            <span class="w-[15px] h-[15px] rounded-full border-2 border-white flex items-center justify-center">
+                                <span class="w-[9px] h-[9px] rounded-full bg-white hidden"></span>
+                            </span>
+                            <span class="pl-[15px] font-['Inter'] font-light text-[16px] text-white w-[280px]">К сожалению, не получится</span>
+                        </label>
+                    </div>
                 </div>
 
-                <!-- Вариант "Да, такое нельзя пропустить" -->
-                <div class="flex items-center justify-center pt-[20px] w-full">
-                    <div class="relative w-[15px] h-[15px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 15 15">
-                            <circle cx="7.5" cy="7.5" r="6.5" stroke="white" stroke-width="2" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[16px] text-white w-[280px]">Да, такое нельзя пропустить</p>
-                    </div>
-                </div>
-
-                <!-- Вариант "К сожалению, не получится" -->
-                <div class="flex items-center justify-center pt-[10px] w-full">
-                    <div class="relative w-[15px] h-[15px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 15 15">
-                            <circle cx="7.5" cy="7.5" r="6.5" stroke="white" stroke-width="2" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[16px] text-white w-[280px]">К сожалению, не получится</p>
-                    </div>
-                </div>
-
-                <!-- Кнопка ОТПРАВИТЬ -->
+                <!-- Кнопка отправки -->
                 <div class="flex items-center justify-center pt-[40px] w-full">
-                    <div class="bg-white px-[50px] py-[5px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[20px] text-black text-center">ОТПРАВИТЬ</p>
-                    </div>
+                    <input id="submit-btn" type="submit" class="bg-white px-[50px] py-[5px] font-['Inter'] font-light text-[20px] text-black text-center" value="ОТПРАВИТЬ" />
                 </div>
 
                 <!-- Нижний декоративный блок (волна + элемент) -->
@@ -440,7 +439,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -751,7 +750,7 @@
 
         <!-- ЭКРАН 8: АНКЕТА ГОСТЯ (планшетная версия) -->
         <div class="relative min-h-[1500px] w-full bg-[#160101]">
-            <div class="flex flex-col items-center w-full h-full overflow-y-auto pt-4 pb-8">
+            <form id="guestFormTablet" class="flex flex-col items-center w-full h-full overflow-y-auto pt-4 pb-8">
                 <!-- Заголовок -->
                 <div class="flex items-center justify-center pt-[100px] w-full">
                     <p class="font-['Nyght_Serif',sans-serif] text-[64px] text-white leading-none">Анкета гостя</p>
@@ -767,74 +766,69 @@
                     <p class="font-['Inter',sans-serif] font-light text-[32px] text-white w-[628px]">Имя и фамилия:</p>
                 </div>
 
-                <!-- Линия для ввода (подчёркивания) -->
+                <!-- Поле имени -->
                 <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Nyght_Serif',sans-serif] text-[48px] text-center text-white">_________________________</p>
+                    <input required type="text" name="nameandsurname"
+                        class="w-full max-w-[628px] bg-transparent border-b-2 border-white text-white text-[32px] font-['Inter'] font-light text-left outline-none pb-1" />
                 </div>
 
                 <!-- Вопрос про ЗАГС -->
                 <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Inter',sans-serif] font-light text-[32px] text-white">Планируете ли присутствовать в загсе?</p>
+                    <p class="font-['Inter',sans-serif] font-light max-w-[628px] w-full text-[32px] text-left text-white">Планируете ли присутствовать в загсе?</p>
                 </div>
 
                 <!-- Вариант "Да, конечно" -->
                 <div class="flex items-center justify-center pt-[20px] w-full">
-                    <div class="relative w-[30px] h-[30px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 30 30">
-                            <circle cx="15" cy="15" r="13.5" stroke="white" stroke-width="3" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[32px] text-white w-[580px]">Да, конечно</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_zags" value="Да" class="hidden" required/>
+                        <span class="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[15px] h-[15px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[32px] text-white w-[580px]">Да, конечно</span>
+                    </label>
                 </div>
 
                 <!-- Вариант "Не получится" -->
                 <div class="flex items-center justify-center pt-[10px] w-full">
-                    <div class="relative w-[30px] h-[30px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 30 30">
-                            <circle cx="15" cy="15" r="13.5" stroke="white" stroke-width="3" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[32px] text-white w-[580px]">Не получится</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_zags" value="Нет" class="hidden"/>
+                        <span class="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[15px] h-[15px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[32px] text-white w-[580px]">Не получится</span>
+                    </label>
                 </div>
-
+                
                 <!-- Вопрос про банкет -->
                 <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Inter',sans-serif] font-light text-[32px] text-white">Планируете ли присутствие на банкете?</p>
+                    <p class="font-['Inter',sans-serif] font-light max-w-[628px] w-full text-[32px] text-left text-white">Планируете ли присутствие на банкете?</p>
                 </div>
 
                 <!-- Вариант "Да, такое нельзя пропустить" -->
                 <div class="flex items-center justify-center pt-[20px] w-full">
-                    <div class="relative w-[30px] h-[30px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 30 30">
-                            <circle cx="15" cy="15" r="13.5" stroke="white" stroke-width="3" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[32px] text-white w-[580px]">Да, такое нельзя пропустить</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_banket" value="Да" class="hidden" required/>
+                        <span class="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[15px] h-[15px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[32px] text-white w-[580px]">Да, такое нельзя пропустить</span>
+                    </label>
                 </div>
 
                 <!-- Вариант "К сожалению, не получится" -->
                 <div class="flex items-center justify-center pt-[10px] w-full">
-                    <div class="relative w-[30px] h-[30px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 30 30">
-                            <circle cx="15" cy="15" r="13.5" stroke="white" stroke-width="3" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[32px] text-white w-[580px]">К сожалению, не получится</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_banket" value="Нет" class="hidden"/>
+                        <span class="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[15px] h-[15px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[32px] text-white w-[580px]">К сожалению, не получится</span>
+                    </label>
                 </div>
 
-                <!-- Кнопка ОТПРАВИТЬ -->
+                <!-- Кнопка отправки -->
                 <div class="flex items-center justify-center pt-[40px] w-full">
-                    <div class="bg-white px-[80px] py-[10px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[36px] text-black text-center">ОТПРАВИТЬ</p>
-                    </div>
+                    <input id="submit-btn" type="submit" class="bg-white px-[80px] py-[10px] font-['Inter'] font-light text-[36px] text-black text-center" value="ОТПРАВИТЬ"/>
                 </div>
 
                 <!-- Нижний декоративный блок -->
@@ -858,7 +852,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -1168,7 +1162,7 @@
 
         <!-- ЭКРАН 8: АНКЕТА ГОСТЯ (десктопная версия) -->
         <div class="relative min-h-[1500px] w-full bg-[#160101]">
-            <div class="flex flex-col items-center w-full h-full overflow-y-auto pt-4 pb-8">
+            <form id="guestFormDesktop" class="flex flex-col items-center w-full h-full overflow-y-auto pt-4 pb-8">
                 <!-- Заголовок -->
                 <div class="flex items-center justify-center pt-[100px] w-full">
                     <p class="font-['Nyght_Serif',sans-serif] text-[96px] text-center text-white leading-none">Анкета гостя</p>
@@ -1184,74 +1178,69 @@
                     <p class="font-['Inter',sans-serif] font-light text-[40px] text-white w-[788px]">Имя и фамилия:</p>
                 </div>
 
-                <!-- Линия для ввода (подчёркивания) -->
+                <!-- Поле имени -->
                 <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Nyght_Serif',sans-serif] text-[48px] text-center text-white">_______________________________</p>
+                    <input required type="text" name="nameandsurname"
+                        class="w-full max-w-[788px] bg-transparent border-b-2 border-white text-white text-[48px] font-['Inter'] font-light text-left outline-none pb-1" />
                 </div>
 
                 <!-- Вопрос про ЗАГС -->
                 <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Inter',sans-serif] font-light text-[40px] text-center text-white">Планируете ли присутствовать в загсе?</p>
+                    <p class="font-['Inter',sans-serif] font-light max-w-[788px] w-full text-[40px] text-left text-white">Планируете ли присутствовать в загсе?</p>
                 </div>
 
                 <!-- Вариант "Да, конечно" -->
                 <div class="flex items-center justify-center pt-[20px] w-full">
-                    <div class="relative w-[30px] h-[30px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 30 30">
-                            <circle cx="15" cy="15" r="13.5" stroke="white" stroke-width="3" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[40px] text-white w-[740px]">Да, конечно</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_zags" value="Да" class="hidden" required/>
+                        <span class="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[15px] h-[15px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[40px] text-white w-[740px]">Да, конечно</span>
+                    </label>
                 </div>
 
                 <!-- Вариант "Не получится" -->
                 <div class="flex items-center justify-center pt-[10px] w-full">
-                    <div class="relative w-[30px] h-[30px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 30 30">
-                            <circle cx="15" cy="15" r="13.5" stroke="white" stroke-width="3" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[40px] text-white w-[740px]">Не получится</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_zags" value="Нет" class="hidden"/>
+                        <span class="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[15px] h-[15px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[40px] text-white w-[740px]">Не получится</span>
+                    </label>
                 </div>
 
                 <!-- Вопрос про банкет -->
                 <div class="flex items-center justify-center pt-[30px] w-full">
-                    <p class="font-['Inter',sans-serif] font-light text-[40px] text-center text-white">Планируете ли присутствие на банкете?</p>
+                    <p class="font-['Inter',sans-serif] font-light max-w-[788px] text-[40px] text-center text-white">Планируете ли присутствие на банкете?</p>
                 </div>
 
                 <!-- Вариант "Да, такое нельзя пропустить" -->
                 <div class="flex items-center justify-center pt-[20px] w-full">
-                    <div class="relative w-[30px] h-[30px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 30 30">
-                            <circle cx="15" cy="15" r="13.5" stroke="white" stroke-width="3" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[40px] text-white w-[740px]">Да, такое нельзя пропустить</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_banket" value="Да" class="hidden" required/>
+                        <span class="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[15px] h-[15px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[40px] text-white w-[740px]">Да, такое нельзя пропустить</span>
+                    </label>
                 </div>
 
                 <!-- Вариант "К сожалению, не получится" -->
                 <div class="flex items-center justify-center pt-[10px] w-full">
-                    <div class="relative w-[30px] h-[30px]">
-                        <svg class="absolute inset-0 w-full h-full" fill="none" viewBox="0 0 30 30">
-                            <circle cx="15" cy="15" r="13.5" stroke="white" stroke-width="3" />
-                        </svg>
-                    </div>
-                    <div class="pl-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[40px] text-white w-[740px]">К сожалению, не получится</p>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="is_banket" value="Нет" class="hidden"/>
+                        <span class="w-[30px] h-[30px] rounded-full border-2 border-white flex items-center justify-center">
+                            <span class="w-[15px] h-[15px] rounded-full bg-white hidden"></span>
+                        </span>
+                        <span class="pl-[15px] font-['Inter'] font-light text-[40px] text-white w-[740px]">К сожалению, не получится</span>
+                    </label>
                 </div>
 
                 <!-- Кнопка ОТПРАВИТЬ -->
                 <div class="flex items-center justify-center pt-[40px] w-full">
-                    <div class="bg-[#f7f1e5] px-[100px] py-[15px]">
-                        <p class="font-['Inter',sans-serif] font-light text-[48px] text-black text-center">ОТПРАВИТЬ</p>
-                    </div>
+                    <input id="submit-btn" type="submit" class="bg-[#f7f1e5] px-[100px] py-[15px] font-['Inter',sans-serif] font-light text-[48px] text-black text-center" value="ОТПРАВИТЬ"/>
                 </div>
 
                 <!-- Нижний декоративный блок -->
@@ -1275,7 +1264,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

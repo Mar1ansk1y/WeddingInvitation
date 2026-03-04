@@ -54,3 +54,8 @@ body, .nyght-font {
 .content-stretch p {
     margin: 0;
 }
+
+/* Показываем внутренний кружок, когда радио отмечено */
+input[type="radio"]:checked + span .bg-white {
+    display: block;
+}
